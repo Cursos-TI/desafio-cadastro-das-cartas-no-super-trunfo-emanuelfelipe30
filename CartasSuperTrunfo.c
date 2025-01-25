@@ -99,15 +99,15 @@ int main() {
     printf("========== Seja bem vindo ao super trunfo - países ==========\n");
     printf("=============================================================\n");
     
-    //realiza o preenchimento da 1ª carta
+    //realiza o preenchimento e exibe os dados da 1ª carta
     carta1 = preencheDadosCarta(1);
 
-    //realiza o preenchimento da 2ª carta
+    //realiza o preenchimento e exibe os dados da 2ª carta
     carta2 = preencheDadosCarta(2);
 
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
+    // preenche o código das cartas
+    carta1.codigoCarta = carta1.estado + '01';
+    carta2.codigoCarta = carta1.estado == carta2.estado ? carta2.estado + "02" : carta2.estado + "01";
 
     return 0;
 }
