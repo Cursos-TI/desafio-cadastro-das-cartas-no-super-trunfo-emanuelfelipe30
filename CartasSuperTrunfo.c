@@ -1,113 +1,90 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-
-// cria uma estrutura 'carta' com os atributos necessários
-struct carta {
-    char estado;
-    int codigoCarta;
-    char nomeCidade[50];
-    int populacao;
-    float area;
-    float pib;
-    int numeroPontosTuristicos;
-};
-
-// cria a função que irá preencher a carta com os dados digitados pelo usuário
-struct carta preencheDadosCarta(int numeroCarta) {
-    // cria instância da carta a ser preenchida
-    struct carta cartaPreenchida;
-    // cria uma variável de confirmação (a carta só será salva após esta variável ser atribuída com o valor 'S')
-    char confirmacao;
-
-    // cria um laço de repetição onde somente será encerrado após o usuário confirmar o preenchimento da carta
-    do {
-        // indica qual carta será preenchida (de acordo com o número passado por parâmetro)
-        if(numeroCarta == 1) {
-            printf("\n\nVamos começar preenchendo os dados da %dª carta\n", numeroCarta);
-        } else {
-            printf("\n\nPreencha os dados da %dª carta\n", numeroCarta);
-        }
-        printf("_____________________________________________________________\n\n");
-        
-        // solicita o preenchimento do atributo 'estado'
-        printf("Digite a sigla do estado: ");
-        scanf(" %c", &cartaPreenchida.estado);
-
-        // solicita o preenchimento do atributo 'nomeCidade'
-        printf("Digite o nome da cidade: ");
-        scanf(" %s", cartaPreenchida.nomeCidade);
-
-        // solicita o preenchimento do atributo 'populacao'
-        printf("Digite a quantidade habitantes da cidade: ");
-        scanf(" %d", &cartaPreenchida.populacao);
-
-        // solicita o preenchimento do atributo 'area'
-        printf("Digite a área da cidade (em km²): ");
-        scanf(" %f", &cartaPreenchida.area);
-
-        // solicita o preenchimento do atributo 'pib'
-        printf("Digite o pib da cidade: ");
-        scanf(" %f", &cartaPreenchida.pib);
-
-        // solicita o preenchimento do atributo 'numeroPontosTuristicos'
-        printf("Digite a quantidade de pontos turísticos da cidade: ");
-        scanf(" %d", &cartaPreenchida.numeroPontosTuristicos);
-
-        //exibe as informações preenchidas
-        printf("\n-------------------------------------------------------------\n");
-        printf("------- Confira logo abaixo as informações preenchidas ------\n");
-        printf("------- e confirme se estiver de acordo. --------------------\n");
-        printf("-------------------------------------------------------------\n\n");
-        printf("Sigla do estado: %c\n", cartaPreenchida.estado);
-        printf("Nome da cidade: %s\n", cartaPreenchida.nomeCidade);
-        printf("Quantidade habitantes da cidade: %d\n", cartaPreenchida.populacao);
-        printf("Área da cidade (em km²): %.2f\n", cartaPreenchida.area);
-        printf("PIB da cidade: %.2f\n", cartaPreenchida.pib);
-        printf("Quantidade de pontos turísticos da cidade: %d\n", cartaPreenchida.numeroPontosTuristicos);
-
-        //solicita a confirmação do usuário
-        printf("\nconfirmar [s/n]: ");
-        scanf(" %c", &confirmacao);
-    } while(confirmacao != 'S' && confirmacao != 's');
-
-    // exibe a informação de preenchimento confirmado
-    printf("\npreenchimento confirmado\n");
-
-    // devolve a carta preenchida
-    return cartaPreenchida;
-}
-
 int main() {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
+    // Declaração das variáveis para a primeira carta
+    char estado1;
+    char codigo1[4];
+    char nomeCidade1[50];
+    unsigned long int populacao1;
+    float area1;
+    float pib1;
+    int pontosTuristicos1;
+    float densidadePopulacional1;
+    float pibPerCapita1;
+    float superPoder1;
     
-    // cria a instância da carta 1
-    struct carta carta1;
-    // cria a instância da carta 2
-    struct carta carta2;
+    // Entrada de dados para a primeira carta
+    printf("Insira os dados da primeira carta:\n");
+    printf("Estado (A-H): ");
+    scanf(" %c", &estado1);
+    printf("Código da Carta: ");
+    scanf(" %s", codigo1);
+    printf("Nome da Cidade: ");
+    scanf(" %s", nomeCidade1);
+    printf("População: ");
+    scanf(" %lu", &populacao1);
+    printf("Área (km²): ");
+    scanf(" %f", &area1);
+    printf("PIB (bilhões de reais): ");
+    scanf(" %f", &pib1);
+    printf("Número de Pontos Turísticos: ");
+    scanf(" %d", &pontosTuristicos1);
     
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
+    // Cálculo da densidade populacional e PIB per capita para a primeira carta
+    densidadePopulacional1 = populacao1 / area1;
+    pibPerCapita1 = (pib1 * 1000000000) / populacao1;
+    superPoder1 = populacao1 + area1 + (pib1 * 1000000000) + pontosTuristicos1 + pibPerCapita1 + (1.0 / densidadePopulacional1);
     
-    // exibe o título do sistema
-    printf("=============================================================\n");
-    printf("========== Seja bem vindo ao super trunfo - países ==========\n");
-    printf("=============================================================\n");
+    // Declaração das variáveis para a segunda carta
+    char estado2;
+    char codigo2[4];
+    char nomeCidade2[50];
+    unsigned long int populacao2;
+    float area2;
+    float pib2;
+    int pontosTuristicos2;
+    float densidadePopulacional2;
+    float pibPerCapita2;
+    float superPoder2;
     
-    //realiza o preenchimento e exibe os dados da 1ª carta
-    carta1 = preencheDadosCarta(1);
-
-    //realiza o preenchimento e exibe os dados da 2ª carta
-    carta2 = preencheDadosCarta(2);
-
-    // preenche o código das cartas
-    carta1.codigoCarta = carta1.estado + '01';
-    carta2.codigoCarta = carta1.estado == carta2.estado ? carta2.estado + "02" : carta2.estado + "01";
-
+    // Entrada de dados para a segunda carta
+    printf("\nInsira os dados da segunda carta:\n");
+    printf("Estado (A-H): ");
+    scanf(" %c", &estado2);
+    printf("Código da Carta: ");
+    scanf(" %s", codigo2);
+    printf("Nome da Cidade: ");
+    scanf(" %s", nomeCidade2);
+    printf("População: ");
+    scanf(" %lu", &populacao2);
+    printf("Área (km²): ");
+    scanf(" %f", &area2);
+    printf("PIB (bilhões de reais): ");
+    scanf(" %f", &pib2);
+    printf("Número de Pontos Turísticos: ");
+    scanf(" %d", &pontosTuristicos2);
+    
+    // Cálculo da densidade populacional e PIB per capita para a segunda carta
+    densidadePopulacional2 = populacao2 / area2;
+    pibPerCapita2 = (pib2 * 1000000000) / populacao2;
+    superPoder2 = populacao2 + area2 + (pib2 * 1000000000) + pontosTuristicos2 + pibPerCapita2 + (1.0 / densidadePopulacional2);
+    
+    // Exibição dos dados das cartas
+    printf("\nCarta 1:\n");
+    printf("Estado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %lu\nÁrea: %.2f km²\nPIB: %.2f bilhões de reais\nNúmero de Pontos Turísticos: %d\nDensidade Populacional: %.2f hab/km²\nPIB per Capita: %.2f reais\nSuper Poder: %.2f\n", estado1, codigo1, nomeCidade1, populacao1, area1, pib1, pontosTuristicos1, densidadePopulacional1, pibPerCapita1, superPoder1);
+    
+    printf("\nCarta 2:\n");
+    printf("Estado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %lu\nÁrea: %.2f km²\nPIB: %.2f bilhões de reais\nNúmero de Pontos Turísticos: %d\nDensidade Populacional: %.2f hab/km²\nPIB per Capita: %.2f reais\nSuper Poder: %.2f\n", estado2, codigo2, nomeCidade2, populacao2, area2, pib2, pontosTuristicos2, densidadePopulacional2, pibPerCapita2, superPoder2);
+    
+    // Comparação dos atributos
+    printf("\nComparação de Cartas:\n");
+    printf("População: Carta %d venceu (%d)\n", populacao1 > populacao2 ? 1 : 2, populacao1 > populacao2);
+    printf("Área: Carta %d venceu (%d)\n", area1 > area2 ? 1 : 2, area1 > area2);
+    printf("PIB: Carta %d venceu (%d)\n", pib1 > pib2 ? 1 : 2, pib1 > pib2);
+    printf("Pontos Turísticos: Carta %d venceu (%d)\n", pontosTuristicos1 > pontosTuristicos2 ? 1 : 2, pontosTuristicos1 > pontosTuristicos2);
+    printf("Densidade Populacional: Carta %d venceu (%d)\n", densidadePopulacional1 < densidadePopulacional2 ? 1 : 2, densidadePopulacional1 < densidadePopulacional2);
+    printf("PIB per Capita: Carta %d venceu (%d)\n", pibPerCapita1 > pibPerCapita2 ? 1 : 2, pibPerCapita1 > pibPerCapita2);
+    printf("Super Poder: Carta %d venceu (%d)\n", superPoder1 > superPoder2 ? 1 : 2, superPoder1 > superPoder2);
+    
     return 0;
 }
